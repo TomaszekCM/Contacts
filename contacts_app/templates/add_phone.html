@@ -1,0 +1,69 @@
+<title>Skrzynka kontaktowa</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: row;
+        margin: 0;
+    }
+
+    .col-1 {
+        background: #D7E8D4;
+        flex: 1;
+    }
+
+    .col-2 {
+        display: flex;
+        flex-direction: column;
+        flex: 8;
+        padding: 1em;
+    }
+
+    nav {
+        padding: 1em;
+    }
+</style>
+<body>
+<nav class="col-1"><h2>Menu</h2>
+
+    <br><br><br><br><br>
+    <p><a href="../../">Lista kontaktów</a></p><br>
+    <p><a href="../../new/">Dodaj kontakt</a></p><br>
+    <p><a href="../../groups/">Grupy</a></p><br>
+    <p><a href="../../group-search/">Wyszukaj osobę</a></p><br>
+
+
+</nav>
+<div class="col-2">
+
+    <h3> Dodaj numer telefonu dla: {{ person.name }} {{ person.surname }}</h3>
+
+
+    <form action="" method="post">
+        <label>
+            Numer:
+            <input type="text" name="number">
+        </label>
+        <label>
+            Opis:
+            <input type="text" name="description">
+        </label><br>
+
+
+        <input type="submit" value="Zatwierdź">
+
+
+        {% csrf_token %}
+    </form>
+
+
+    <a href="../../show/{{ person.id }}/">Wróć</a>
+
+
+</div>
+</body>
+</html>

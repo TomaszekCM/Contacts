@@ -1,0 +1,75 @@
+<title>Skrzynka kontaktowa</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: row;
+        margin: 0;
+    }
+
+    .col-1 {
+        background: #D7E8D4;
+        flex: 1;
+    }
+
+    .col-2 {
+        display: flex;
+        flex-direction: column;
+        flex: 8;
+        padding: 1em;
+    }
+
+    nav {
+        padding: 1em;
+    }
+
+
+</style>
+<body>
+<nav class="col-1"><h2>Menu</h2>
+
+    <br><br><br><br><br>
+    <p><a href="../../">Lista kontaktów</a></p><br>
+    <p><a href="../../new/">Dodaj kontakt</a></p><br>
+    <p><a href="../../groups/">Grupy</a></p><br>
+    <p><a href="../../group-search/">Wyszukaj osobę</a></p><br>
+
+
+</nav>
+<div class="col-2">
+
+    <h2>{{ person.name }} {{ person.surname }}</h2>
+
+
+    <form action="" method="post">
+        <p>
+            <label>
+                <h4>Dodaj kontakt do grupy</h4>
+                <br>
+                <select name="group">
+                    {% for group in all_groups %}
+
+                        <option value="{{ group.id }}">{{ group.group_name }}</option>
+
+                    {% endfor %}
+                </select>
+            </label>
+
+            <input type="submit" value="zatwierdź">
+        </p>
+        {% csrf_token %}
+    </form>
+
+    <br>
+
+    <a href="/../../show/{{ person.id }}/">Wróć</a>
+
+
+</div>
+
+</body>
+</html>
